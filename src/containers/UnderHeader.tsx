@@ -15,9 +15,11 @@ const UnderHeader: React.FC<unknown> = () => {
         id:'',
         name:''
     });
+
     const [geoList, setGeoList] = useState([]);
+
     useEffect(()=>{
-        axios.get('http://localhost:3000/google-trends/get-country-code')
+        axios.get('http://192.168.1.13:3001/google-trends/get-country-code')
         .then(response => {
           setGeoList(response.data);
           setGeo('VN');
@@ -26,6 +28,7 @@ const UnderHeader: React.FC<unknown> = () => {
           console.error(error)
         })
     },[])
+
 
     useEffect(()=>{
         geoList.map((el:MyObject) => {
